@@ -5,6 +5,9 @@ import java.util.Collections;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.session.hazelcast.config.annotation.web.http.EnableHazelcastHttpSession;
@@ -12,12 +15,15 @@ import org.springframework.session.hazelcast.config.annotation.web.http.EnableHa
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 @SpringBootApplication(scanBasePackages={
 		"es.codeurjc.web.service", "com.example"})
 @EnableScheduling
 @EnableHazelcastHttpSession
+@EnableCaching
 public class TravelFriendlyApplication {
-
+	private static final Log LOG = LogFactory.getLog(TravelFriendlyApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(TravelFriendlyApplication.class, args);
 		
@@ -39,4 +45,10 @@ public class TravelFriendlyApplication {
 
 		return config;
 	}
+	
+	 @Bean
+	 public CacheManager cacheManager() {
+	   LOG.info("Activating cache...");
+	    return new ConcurrentMapCacheManager("viajes","opiniones");
+	 }
 }

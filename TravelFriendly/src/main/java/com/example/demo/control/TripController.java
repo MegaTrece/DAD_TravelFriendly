@@ -162,18 +162,10 @@ public class TripController {
 	
 	//cachea todos los viajes
 
-	/*@GetMapping(value= "/tusViajes")
-	public List<Trip> getTrips(){
-		return 
-	}*/
-	
-	
 	
 	// Guarda el resultado del método en la caché que se haya
 		//configurado para la aplicación, asociado a los valores de
-		//los parámetros
-	
-	
+		//los parámetro
 	
 	
 	//Guarda el resultado del metodo en la cache de viajes;
@@ -193,19 +185,11 @@ public class TripController {
 		List<Trip> t = new ArrayList<Trip>();
 		
 		for (int i = 0; i < user.get().getBtrip().size(); i++) {
-			//Encuentra el viaje reservado(cacheable guarda valor en caché) a raiz del repositorio
-			//cacheable
 			
-			//repoTrip.findByConductor_Id(user.get().getBtrip().get(i).getTrip().getConductorId());
-			//end cacheable
 			t.add(user.get().getBtrip().get(i).getTrip());
 			
 		}
-		//cacheable
-		//encuentra el viaje publicado
-		//repoTrip.findByConductor_Id(user.get().getId());
-		//end cacheable
-		//repoTrip.findAll();
+		
 		model.addAttribute("name", user.get().getUsername());
 		model.addAttribute("PTrip", user.get().getPtrip());
 		model.addAttribute("BTrip", t);
