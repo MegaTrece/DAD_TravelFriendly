@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.FetchType;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Trip;
 import com.example.demo.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //nombre de la cache viajes
 @CacheConfig(cacheNames="viajes")
@@ -25,9 +27,8 @@ public interface TripRepository extends JpaRepository <Trip, Long>{
 	//empezaría a devolver un valor que no se corresponde con el actual.
 	@CacheEvict(allEntries=true)
 	Trip save(Trip trip);
-	
-	
 	Optional<Trip> findByConductor_Id(long id);
+	@Cacheable
 	List<Trip> findAll();
 
 	List<Optional<Trip>> findByOrigin(String origin);

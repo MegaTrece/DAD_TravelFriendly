@@ -23,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
 @EnableHazelcastHttpSession
 @EnableCaching
 public class TravelFriendlyApplication {
+	
 	private static final Log LOG = LogFactory.getLog(TravelFriendlyApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(TravelFriendlyApplication.class, args);

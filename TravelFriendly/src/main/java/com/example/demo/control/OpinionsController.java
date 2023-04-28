@@ -71,7 +71,7 @@ public class OpinionsController {
 		//el usuario que realiza la opinion, y la opinion que realiza
 		//OPIN Y nombre
 		
-	@Cacheable("opiniones")
+	//@Cacheable("opiniones")
 	@GetMapping("/perfil")
 	public String Perfil(Model model, HttpServletRequest request) {
 
@@ -86,7 +86,8 @@ public class OpinionsController {
 			o.add(user.get().getOpinions().get(i));
 
 		}
-
+		//CACHEABLE
+		repoOpinion.findAll();
 		model.addAttribute("opin", o);
 
 		model.addAttribute("name", user.get().getUsername());

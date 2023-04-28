@@ -22,6 +22,8 @@ public class CacheController {
 	public Map<Object, Object> getCacheContentViajes() {
 		ConcurrentMapCacheManager cacheMgr = (ConcurrentMapCacheManager) cacheManager;
 		ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("viajes");
+		System.out.println(cache.getName());
+		System.out.println(cache.getNativeCache());
 		return cache.getNativeCache();
 	}
 	//devuelve el contenido actual de la cache de opiniones en LA SIGUIENTE URL
@@ -29,6 +31,8 @@ public class CacheController {
 	public Map<Object, Object> getCacheContentOpiniones() {
 		ConcurrentMapCacheManager cacheMgr = (ConcurrentMapCacheManager) cacheManager;
 		ConcurrentMapCache cache = (ConcurrentMapCache) cacheMgr.getCache("opiniones");
+		System.out.println(cache.getName());
+		System.out.println(cache.getNativeCache());
 		return cache.getNativeCache();
 	}
 }
