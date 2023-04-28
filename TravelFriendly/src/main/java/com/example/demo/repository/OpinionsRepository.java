@@ -2,11 +2,13 @@ package com.example.demo.repository;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.Opinions;
 import com.example.demo.model.Trip;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -14,4 +16,6 @@ import java.util.Optional;
 public interface OpinionsRepository extends JpaRepository <Opinions, Long>{
 	@CacheEvict(allEntries=true)
 	Opinions save(Opinions op);
+	@Cacheable
+	List<Opinions> findAll();
 }

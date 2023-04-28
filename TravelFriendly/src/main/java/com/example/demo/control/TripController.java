@@ -174,7 +174,7 @@ public class TripController {
 	//PTrip
 	//BTrip
 	
-	@Cacheable("viajes")
+	//@Cacheable("viajes")
 	@GetMapping("/tusViajes")
 	public String tusViajes(Model model, HttpServletRequest request) {
 
@@ -186,9 +186,13 @@ public class TripController {
 		
 		for (int i = 0; i < user.get().getBtrip().size(); i++) {
 			
+			
 			t.add(user.get().getBtrip().get(i).getTrip());
 			
 		}
+		
+		//CACHEABLE 
+		repoTrip.findAll();
 		
 		model.addAttribute("name", user.get().getUsername());
 		model.addAttribute("PTrip", user.get().getPtrip());
