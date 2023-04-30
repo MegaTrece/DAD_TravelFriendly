@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Booking {
 
@@ -16,7 +18,7 @@ public class Booking {
 	@ManyToOne //Esta se enlaza con Btrip
 	private User user;
 	
-	@ManyToOne
+	@ManyToOne @JsonBackReference
 	private Trip trip;
 	
 	

@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.model.Opinions;
 import com.example.demo.model.Trip;
 import com.example.demo.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,10 +28,11 @@ public interface TripRepository extends JpaRepository <Trip, Long>{
 	//empezaría a devolver un valor que no se corresponde con el actual.
 	@CacheEvict(allEntries=true)
 	Trip save(Trip trip);
-	Optional<Trip> findByConductor_Id(long id);
 	@Cacheable
 	List<Trip> findAll();
-
+	@Cacheable
+	Optional<Trip> findByConductor_Id(long id);
+	@Cacheable
 	List<Optional<Trip>> findByOrigin(String origin);
 	List<Optional<Trip>> findByDestiny(String destiny);
 	List<Optional<Trip>> findByDate(String date);

@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Chat {
 
@@ -19,7 +24,7 @@ public class Chat {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id; 
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL) @LazyCollection(LazyCollectionOption.FALSE)
 	private List<Message> mensg;
 	
 	public List<Message> getMensg() {
@@ -32,10 +37,10 @@ public class Chat {
 
 	public String mensajes ="";
 	
-	@ManyToMany(mappedBy="chats")
+	@ManyToMany(mappedBy="chats") @LazyCollection(LazyCollectionOption.FALSE)
 	private List<User> users; 
 	
-	
+	@JsonManagedReference
 	public List<User> getUsers() {
 		return users;
 	}

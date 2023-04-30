@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 @Entity
@@ -16,7 +19,7 @@ public class Opinions {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id; 
 	private String text="";
-	@OneToOne
+	@OneToOne @JsonBackReference
 	private User orig, dest;
 	private String nameOrig, nameDest;
 	protected Opinions(){}
@@ -36,11 +39,11 @@ public class Opinions {
 	public String getText() {
 		return text;
 	}
-	
+	@JsonBackReference
 	public User getOrigin() {
 		return this.orig;
 	}
-	
+	@JsonManagedReference
 	public User getDestiny() {
 		return this.dest;
 	}

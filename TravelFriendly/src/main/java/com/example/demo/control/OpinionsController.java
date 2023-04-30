@@ -70,8 +70,6 @@ public class OpinionsController {
 	//Guarda el resultado del metodo en la cache de opiniones;
 		//el usuario que realiza la opinion, y la opinion que realiza
 		//OPIN Y nombre
-		
-	//@Cacheable("opiniones")
 	@GetMapping("/perfil")
 	public String Perfil(Model model, HttpServletRequest request) {
 
@@ -89,15 +87,9 @@ public class OpinionsController {
 		//CACHEABLE
 		repoOpinion.findAll();
 		model.addAttribute("opin", o);
-
 		model.addAttribute("name", user.get().getUsername());
-
 		return "profile";
-
 	}
-
-	
-
 	@GetMapping("/opinarConductor/{id}")
 	public String opinarC(Model model, @PathVariable long id, HttpServletRequest request) {
 		// recogemos el nombre del usuario real a través del srrvicio http

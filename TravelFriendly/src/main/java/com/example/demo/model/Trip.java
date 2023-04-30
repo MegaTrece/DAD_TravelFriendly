@@ -3,7 +3,6 @@ package com.example.demo.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +13,10 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Trip {
@@ -34,10 +37,10 @@ public class Trip {
 	
 	private String nombreconductor=""; // Para el chat 
 	
-	@ManyToMany	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany @LazyCollection(LazyCollectionOption.FALSE)
  	private List<User> use; //Usuarios que van a realizar el viaje //la primera posicion se va a corresponder a la del condunctor
 	
-	@OneToMany
+	@ManyToMany  
 	private List<Chat> chats;
 	
 	protected Trip() {}
@@ -90,10 +93,11 @@ public class Trip {
 		this.sites--;
 	}
 	
+	@JsonBackReference
 	public User GetConductor() {
 		return conductor;
 	}
-	
+	@JsonManagedReference
 	public List<User> getPasajeros() {
 		return use;
 	}

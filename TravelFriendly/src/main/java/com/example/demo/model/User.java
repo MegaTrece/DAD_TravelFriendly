@@ -7,6 +7,8 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.example.demo.model.Chat;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -25,16 +27,16 @@ public class User {
 	private List<String> roles;
 	
 	// private List<Integer> valoraciones;
-
-	@OneToMany (mappedBy="conductor")//He tocado esta
+	//JsonManaged y JsonBack es para evitar infinitas llamadas recursivas
+	@OneToMany (mappedBy="conductor") @LazyCollection(LazyCollectionOption.FALSE)//He tocado esta
  	private List<Trip> Ptrip= new ArrayList<Trip>();
-	@OneToMany(mappedBy="user")//He tocado esta
+	@OneToMany(mappedBy="user")  @LazyCollection(LazyCollectionOption.FALSE) @JsonManagedReference//He tocado esta
 	private List<Booking> Btrip= new ArrayList<Booking>();
 	
-	@ManyToMany //Un usuario tiene multiples chats y un chat 2 usuarios (multiples tambien)
+	@ManyToMany @LazyCollection(LazyCollectionOption.FALSE) //Un usuario tiene multiples chats y un chat 2 usuarios (multiples tambien)
 	private List<Chat> chats;
 	
-	
+	@JsonBackReference
 	public List<Chat> getChats() {
 		return chats;
 	}
@@ -45,7 +47,8 @@ public class User {
 	
 
 	//Lista de opiniones que tiene la gente del usuario
-	@OneToMany 
+	@OneToMany @LazyCollection(LazyCollectionOption.FALSE) @JsonManagedReference
+	@JsonBackReference
 	private List <Opinions> opinions = new ArrayList<Opinions>();;
 	public Long getId() {
 		return id;
@@ -102,7 +105,7 @@ public class User {
 		opinions.add(o);
 	}
 	
-	
+	@JsonBackReference
 	public List<Trip> getPtrip() {
 		return Ptrip;
 	}

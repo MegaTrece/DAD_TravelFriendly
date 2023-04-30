@@ -183,17 +183,13 @@ public class TripController {
 		String username = request.getUserPrincipal().getName();
 		Optional<User> user = repo.findByUsername(username);
 		List<Trip> t = new ArrayList<Trip>();
-		
 		for (int i = 0; i < user.get().getBtrip().size(); i++) {
-			
-			
 			t.add(user.get().getBtrip().get(i).getTrip());
-			
+			repoTrip.findByConductor_Id(user.get().getBtrip().get(i).getTrip().getConductorId());	
 		}
-		
-		//CACHEABLE 
-		repoTrip.findAll();
-		
+			for (int i = 0; i < user.get().getPtrip().size(); i++) {
+			repoTrip.findByConductor_Id(user.get().getPtrip().get(i).getConductorId());
+		}
 		model.addAttribute("name", user.get().getUsername());
 		model.addAttribute("PTrip", user.get().getPtrip());
 		model.addAttribute("BTrip", t);
