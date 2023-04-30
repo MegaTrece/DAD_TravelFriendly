@@ -2,6 +2,10 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.example.demo.model.Chat;
 
 
