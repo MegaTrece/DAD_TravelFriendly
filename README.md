@@ -186,3 +186,22 @@ Con todo lo anteriormente comentado , unicamente nos quedaria ejecutar nuestra a
 $ java -jar Aplicacion.jar & java -jar ServicioInterno.jar 
 ```
 
+## Fase_4
+En esta fase se han incluido todas las herramientas y técnicas necesarias para permitir que la aplicación sea tolerable a fallos. Para ello se ha creado una infraestructura en OpenStack formada por : 
+- 2 maquinas corriendo la aplicación principal
+- 2 máquinas corriendo la aplicación del servicio internoç
+- 1 instancia de RabbitMQ
+- 1 instancia de MySQL
+- 1 balanceador de carga Haproxy
+De esta forma conseguimos que aunque una de las máquinas se caiga , la otra sirva como resplado. Para acceder a la aplicación lo haremos siempre a través del Haproxy.
+Además se ha introducido el uso de Cache para diferentes entradas en nuestra aplicación.
+
+## Actualización del diagrama de clases y templates
+
+
+
+## Infraestructura OpenStack
+
+
+
+
