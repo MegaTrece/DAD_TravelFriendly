@@ -198,10 +198,10 @@ Además se ha introducido el uso de Cache para diferentes entradas en nuestra ap
 
 ## Actualización del diagrama de clases y templates
 
-
+![Image_Text](https://github.com/MegaTrece/DAD_TravelFriendly/blob/main/DiagramaClasesF.jpg)
 
 ## Infraestructura OpenStack
-
+![Image_Text](https://github.com/MegaTrece/DAD_TravelFriendly/blob/main/InfraestructuraOpenStack.jpg)
 
 
 
