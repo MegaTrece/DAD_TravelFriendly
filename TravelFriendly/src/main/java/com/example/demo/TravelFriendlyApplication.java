@@ -13,7 +13,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.session.hazelcast.config.annotation.web.http.EnableHazelcastHttpSession;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.EvictionPolicy;
 import com.hazelcast.config.JoinConfig;
+import com.hazelcast.config.MapConfig;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -43,7 +45,13 @@ public class TravelFriendlyApplication {
 
 		joinConfig.getMulticastConfig().setEnabled(false);
 		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("192.168.12.254"));
-
+		
+		MapConfig cacheUsers = new MapConfig();
+		cacheUsers.setTimeToLiveSeconds(180);
+		//cacheUsers.setEvictionConfig(EvictionPolicy.LFU);
+		config.getMapConfigs().put("viajes", cacheUsers);
+		config.getMapConfigs().put("opiniones", cacheUsers);
+		
 		return config;
 	}
 	
