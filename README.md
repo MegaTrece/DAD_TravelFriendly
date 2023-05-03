@@ -1,6 +1,11 @@
 # DAD_TravelFriendly
 Repositorio de práctica Desarrollo de Aplicaciones Distribuidas
 
+## Video explicación 
+
+https://www.youtube.com/watch?v=bqYNiot2rNo
+
+
 Nombre del proyecto : Travel Friendly
 
 URL del repositorio de GitHub :  https://github.com/MegaTrece/DAD_TravelFriendly
@@ -202,9 +207,5 @@ Además se ha introducido el uso de Cache para diferentes entradas en nuestra ap
 
 ## Infraestructura OpenStack
 ![Image_Text](https://github.com/MegaTrece/DAD_TravelFriendly/blob/main/InfraestructuraOpenStack.jpg)
-
-## Video explicación 
-
-https://www.youtube.com/watch?v=bqYNiot2rNo
 
 
