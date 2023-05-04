@@ -44,7 +44,7 @@ public class TravelFriendlyApplication {
 		JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 
 		joinConfig.getMulticastConfig().setEnabled(false);
-		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("192.168.12.254"));
+		joinConfig.getTcpIpConfig().setEnabled(true).setMembers(Collections.singletonList("192.168.12.101"));
 		
 		MapConfig cacheUsers = new MapConfig();
 		cacheUsers.setTimeToLiveSeconds(180);
